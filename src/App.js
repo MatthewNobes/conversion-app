@@ -12,11 +12,9 @@ import Home from './Components/Home'
 import DistanceConversion from './Components/Distance/DistanceConversion';
 import MassConversion from './Components/Mass/MassConversion';
 
-function App() {
+const Nav = () => {
   return (
-    <div className="App">
-      <Header />
-      <nav>
+    <nav>
         <Router className="React-Router">
           <div>
             <ul className="React-Router-Group">
@@ -39,6 +37,14 @@ function App() {
           </div>
         </Router>
       </nav>
+  )
+}
+
+const App = () => {
+  return (
+    <div className="App">
+      <Header />
+      <Nav />
     </div>
   );
 }
