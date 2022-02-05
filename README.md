@@ -18,6 +18,12 @@ Currency | API investigation
 Temperature | Proposed
 
 Table 1 - Proposed unit conversions to be added. 
+
+### Core functionality 
+
+The method for making conversions is to convert the input into a base unit, like a kilogram and then convert this base unit into the users desired unit. For example, the user might input 120lb which they want converted to tonnes. This would be converted from pounds to kilograms and then from kilograms to tonnes. 
+
+
 ## Available Scripts
 
 This project was built using create-react-app. As with almost any NPM React project, you can run:
