@@ -6,7 +6,8 @@ export const ConversionForm = (props) => {
 
   return (
     <Box>
-      <Typography>Conversion Form - {conversionFormat}</Typography>
+      <Typography variant="h1">Conversion Form - {conversionFormat}</Typography>
+      <Typography variant="body1">insert from here</Typography>
     </Box>
   );
 };

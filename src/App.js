@@ -2,10 +2,8 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Menu from "./Components/Menu";
-
 import Home from "./Components/Home";
-import DistanceConversion from "./Components/Distance/DistanceConversion";
-import MassConversion from "./Components/Mass/MassConversion";
+import ConversionForm from "./features/ConversionForm/";
 
 const App = () => {
   return (
@@ -14,8 +12,14 @@ const App = () => {
         <Menu />
 
         <Routes>
-          <Route path="/Distance" element={<DistanceConversion />} />
-          <Route path="/Mass" element={<MassConversion />} />
+          <Route
+            path="/Distance"
+            element={<ConversionForm conversionFormat="Distance" />}
+          />
+          <Route
+            path="/Mass"
+            element={<ConversionForm conversionFormat="Mass" />}
+          />
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
