@@ -1,12 +1,26 @@
 import { ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import { Link } from "react-router-dom";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import SquareFootIcon from "@mui/icons-material/SquareFoot";
+import HomeIcon from "@mui/icons-material/Home";
+
+const GetIcon = (props) => {
+  if (props.linkIcon === "Mass") {
+    return <FitnessCenterIcon />;
+  }
+  if (props.linkIcon === "Distance") {
+    return <SquareFootIcon />;
+  } else {
+    return <HomeIcon />;
+  }
+};
 
 export const ListLink = (props) => {
   const isOpen = props.isOpen;
   const location = props.linkLocation;
   const primaryText = props.linkPrimaryText;
   const secondaryText = props.linkSecondaryText;
+
   return (
     <ListItemButton
       key={location}
@@ -25,7 +39,7 @@ export const ListLink = (props) => {
           justifyContent: "center",
         }}
       >
-        <InboxIcon />
+        <GetIcon linkIcon={props.linkIcon} />
       </ListItemIcon>
       <ListItemText
         primary={primaryText}

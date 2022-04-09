@@ -5,7 +5,6 @@ import {
   List,
   Toolbar,
   CssBaseline,
-  Typography,
   Divider,
   IconButton,
 } from "@mui/material";
@@ -15,6 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListLink from "./ListLink";
+import Header from "../Header";
 
 const drawerWidth = 240;
 
@@ -112,9 +112,7 @@ export const Menu = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Insert Header here
-          </Typography>
+          <Header />
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -131,13 +129,21 @@ export const Menu = () => {
         <List>
           <ListLink
             isOpen={open}
-            linkLocation={"/Mass"}
-            linkPrimaryText={"Mass"}
+            linkLocation={"/"}
+            linkPrimaryText={"Home"}
+            linkIcon={"Home"}
           />
           <ListLink
             isOpen={open}
             linkLocation={"/Mass"}
             linkPrimaryText={"Mass"}
+            linkIcon={"Mass"}
+          />
+          <ListLink
+            isOpen={open}
+            linkLocation={"/Distance"}
+            linkPrimaryText={"Distance"}
+            linkIcon={"Distance"}
           />
         </List>
       </Drawer>
