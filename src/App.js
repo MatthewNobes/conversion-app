@@ -1,7 +1,7 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Header from "./Components/Header";
+import Menu from "./Components/Menu";
 import NavList from "./Components/NavList";
 
 import Home from "./Components/Home";
@@ -12,7 +12,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header />
+        <Menu />
         <NavList />
         <Routes>
           <Route path="/Distance" element={<DistanceConversion />} />
