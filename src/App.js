@@ -1,52 +1,31 @@
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-} from "react-router-dom";
-
-import Header from './Components/Header';
-
-import Home from './Components/Home'
-import DistanceConversion from './Components/Distance/DistanceConversion';
-import MassConversion from './Components/Mass/MassConversion';
-
-const Nav = () => {
-  return (
-    <nav>
-        <Router className="React-Router">
-          <div>
-            <ul className="React-Router-Group">
-              <li className="React-Router-Headlinks">
-                <Link className="React-Router-Links" to="/">Home</Link>
-              </li>
-              <li className="React-Router-Headlinks">
-                <Link className="React-Router-Links" to="/Mass">Mass</Link>
-              </li>
-              <li className="React-Router-Headlinks">
-                <Link className="React-Router-Links" to="/Distance">Distance</Link>
-              </li>
-            </ul>
-
-            <Routes>
-              <Route path="/Distance" element={<DistanceConversion/>} />
-              <Route path="/Mass" element={<MassConversion/>} />
-              <Route path="/" element={<Home/>} />
-            </Routes>
-          </div>
-        </Router>
-      </nav>
-  )
-}
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Box } from "@mui/system";
+import Menu from "./Components/Menu";
+import Home from "./Components/Home";
+import ConversionForm from "./features/ConversionForm/";
 
 const App = () => {
   return (
-    <div className="App">
-      <Header />
-      <Nav />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Menu />
+        <Box sx={{ paddingTop: "64px", paddingLeft: "64px" }}>
+          <Routes>
+            <Route
+              path="/Distance"
+              element={<ConversionForm conversionFormat="Distance" />}
+            />
+            <Route
+              path="/Mass"
+              element={<ConversionForm conversionFormat="Mass" />}
+            />
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </Box>
+      </div>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
