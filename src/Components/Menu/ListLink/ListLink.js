@@ -4,16 +4,19 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 
 export const ListLink = (props) => {
   const isOpen = props.isOpen;
+  const location = props.linkLocation;
+  const primaryText = props.linkPrimaryText;
+  const secondaryText = props.linkSecondaryText;
   return (
     <ListItemButton
-      key={"Mass"}
+      key={location}
       sx={{
         minHeight: 48,
         justifyContent: isOpen ? "initial" : "center",
         px: 2.5,
       }}
       component={Link}
-      to="/Mass"
+      to={location}
     >
       <ListItemIcon
         sx={{
@@ -24,7 +27,11 @@ export const ListLink = (props) => {
       >
         <InboxIcon />
       </ListItemIcon>
-      <ListItemText primary={"Mass"} sx={{ opacity: isOpen ? 1 : 0 }} />
+      <ListItemText
+        primary={primaryText}
+        secondary={secondaryText}
+        sx={{ opacity: isOpen ? 1 : 0 }}
+      />
     </ListItemButton>
   );
 };
