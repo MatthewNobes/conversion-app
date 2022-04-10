@@ -1,11 +1,5 @@
 import css from "./ConversionForm.module.css";
-import {
-  Autocomplete,
-  TextField,
-  Button,
-  Typography,
-  Box,
-} from "@mui/material";
+import { Autocomplete, TextField, Typography, Box } from "@mui/material";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 
@@ -16,7 +10,7 @@ const ConversionFormHeader = (props) => (
 );
 
 const Form = (props) => {
-  const conversionFormat = props.conversionFormat; //will be needed later
+  //const conversionFormat = props.conversionFormat; will be needed later
   const optionsList = props.optionsList;
   const convertFn = props.convertFn;
 
@@ -47,7 +41,7 @@ const Form = (props) => {
 
   return (
     <form className={css.ConversionForm} onSubmit={formik.handleSubmit}>
-      <Box className={css.ConversionFormHalf}>
+      <Box sx={{ minWidth: "300px", p: 1 }}>
         <Autocomplete
           disablePortal
           id="ConversionForm-From"
@@ -80,7 +74,7 @@ const Form = (props) => {
         />
       </Box>
 
-      <Box className={css.ConversionFormHalf}>
+      <Box sx={{ minWidth: "300px", p: 1 }}>
         <Autocomplete
           disablePortal
           id="ConversionForm-To"
@@ -96,7 +90,9 @@ const Form = (props) => {
         />
 
         <TextField
-          disabled
+          InputProps={{
+            readOnly: true,
+          }}
           id="outlined-disabled"
           fullWidth
           sx={{ p: 1 }}
