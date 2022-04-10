@@ -2,7 +2,7 @@
 import "../../App.css";
 import React from "react";
 import { convertMass } from "./MassFunctions";
-import ConversionForm from "../../features/ConversionForm";
+import ConversionForm from "../ConversionForm";
 
 const massOptions = ["Kilograms", "Pounds", "Tonnes"];
 

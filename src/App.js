@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Box } from "@mui/system";
-import Menu from "./Components/Menu";
-import Home from "./Components/Home";
-import MassConversion from "./Components/Mass";
-import DistanceConversion from "./Components/Distance";
+import Menu from "./components/Menu";
+import Home from "./components/Home";
+import MassConversion from "./features/Mass";
+import DistanceConversion from "./features/Distance";
 
 const App = () => {
   return (
