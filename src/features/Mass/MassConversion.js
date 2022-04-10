@@ -14,7 +14,7 @@ export const MassConversion = () => {
         defaultStartUnit={"Kilograms"}
         defaultEndUnit={"Pounds"}
         optionsList={massOptions}
-        convertFn={convertMass()}
+        convertFn={convertMass}
       />
     </>
   );

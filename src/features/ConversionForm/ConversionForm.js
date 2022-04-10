@@ -8,51 +8,43 @@ const ConversionFormHeader = (props) => (
   </Typography>
 );
 
-export const ConversionForm = (props) => {
-  const conversionFormat = props.conversionFormat; //'Mass
-  const defaultStartUnit = props.defaultStartUnit; //'Kilograms'
-  const defaultEndUnit = props.defaultEndUnit; //'Pounds'
-  const optionsList = props.optionsList; //'["Kilograms", "Pounds", "Tonnes"]'
-  const convertFn = props.convertFn; //convertMass
+const Form = (props) => {
+  const conversionFormat = props.conversionFormat; //will be needed later
+  const optionsList = props.optionsList;
+  const convertFn = props.convertFn;
 
-  const [convertFrom, appendConvertFrom] = useState(defaultStartUnit);
-  const [convertTo, appendConvertTo] = useState(defaultEndUnit);
+  const convertFrom = props.defaultStartUnit;
+  const convertTo = props.defaultEndUnit;
 
-  const [valueToConvert, appendValueToConvert] = useState(6.5);
-  const [result, appendResult] = useState(0);
-
-  const convert = (values) => {
-    const result = convertFn(
-      values.convertFrom,
-      values.convertTo,
-      values.valueToConvert
-    );
-    return result;
-  };
+  const valueToConvert = 0;
+  const [result, appendResult] = useState();
 
   const formik = useFormik({
     initialValues: {
-      convertFrom: "",
-      convertTo: "",
+      convertFrom: convertFrom,
+      convertTo: convertTo,
 
-      valueToConvert: 0,
-      result: 0,
+      valueToConvert: valueToConvert,
+      result: result,
     },
 
     onSubmit: (values) => {
-      debugger;
-      convert(values);
-      console.log(values.result);
+      const conversionResult = convertFn(
+        values.convertFrom,
+        values.convertTo,
+        values.valueToConvert
+      );
+      appendResult(conversionResult);
     },
   });
 
   return (
-    <form className="ConversionForm">
-      <ConversionFormHeader conversionType={conversionFormat} />
+    <form className="ConversionForm" onSubmit={formik.handleSubmit}>
       <div className="ConversionForm-Half">
         <Autocomplete
           disablePortal
           id="ConversionForm-From"
+          fullWidth
           className="ConversionForm-FormElement"
           options={optionsList}
           onChange={(e, value) => formik.setFieldValue("convertFrom", value)}
@@ -62,9 +54,11 @@ export const ConversionForm = (props) => {
           )}
         />
         <TextField
+          fullWidth
           id="ConversionForm-From"
+          name="valueToConvert"
           className="ConversionForm-FormElement"
-          label="Value"
+          placeholder="Please enter a value"
           variant="outlined"
           type="number"
           step={0.1}
@@ -77,27 +71,43 @@ export const ConversionForm = (props) => {
         <Autocomplete
           disablePortal
           id="ConversionForm-To"
+          fullWidth
           className="ConversionForm-FormElement"
           options={optionsList}
           onChange={(e, value) => formik.setFieldValue("convertTo", value)}
           value={formik.values.convertTo}
           renderInput={(params) => <TextField {...params} label="Convert To" />}
         />
+
         <TextField
           disabled
-          id="ConversionForm-To"
+          id="outlined-disabled"
+          fullWidth
           className="ConversionForm-FormElement"
-          label="Result"
-          variant="outlined"
+          placeholder="Result"
           type="number"
           step={0.1}
-          onChange={formik.handleChange}
-          value={formik.values.result}
+          value={result}
         />
       </div>
       <Button className="SubmitForm" variant="outlined" type="submit">
         Submit
       </Button>
     </form>
+  );
+};
+
+export const ConversionForm = (props) => {
+  return (
+    <>
+      <ConversionFormHeader conversionType={props.conversionFormat} />
+      <Form
+        conversionFormat={props.conversionFormat}
+        defaultStartUnit={props.defaultStartUnit}
+        defaultEndUnit={props.defaultEndUnit}
+        optionsList={props.optionsList}
+        convertFn={props.convertFn}
+      />
+    </>
   );
 };
