@@ -24,29 +24,36 @@ Table 1 - Proposed unit conversions to be added.
 The method for making conversions is to convert the input into a base unit, like a kilogram and then convert this base unit into the users desired unit. For example, the user might input 120lb which they want converted to tonnes. This would be converted from pounds to kilograms and then from kilograms to tonnes. 
 
 
-## Available Scripts
 
-This project was built using create-react-app. As with almost any NPM React project, you can run:
+## Development 
 
-### `npm start`
+To get started with this application, you will first need to download all the necessary dependencies for the project using the following command: 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+``` 
+npm i
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Once downloaded, you can then launch the application using the start command:
 
-### `npm test`
+``` 
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Testing 
 
-### `npm run build`
+This application has been setup with Jest testing to ensure that code can be quickly checked for defects against its functionality when new content is added. The test suite can be launched using the following npm command:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+``` 
+npm test
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Development guidance 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The following should be taken into account when making changes to this repo:
+
+* Major features such as mass conversion are stored in the features directory
+* Smaller components such as the Header are stored within the components directory.
+* Test scripts are located in the same directory as the functions and components they test
+* Styling is done within the same directory as where it is used, using css modules. Any major project styling is done from a central CSS file stored in the theme directory
+* Material UI should handle most styling and general changes should be done using the theme object, located in the theme directory
+* The utils directory is for common functions and elements that might be needed in multiple areas in the future, such as the copy to clipboard function. This makes them easier to find and use for other projects in the future.

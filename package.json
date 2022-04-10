@@ -1,5 +1,7 @@
 {
   "name": "conversion-app",
+  "author": "Matthew Nobes",
+  "license": "MIT",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
