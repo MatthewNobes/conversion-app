@@ -4,7 +4,18 @@ import React from "react";
 import { convertMass } from "./MassFunctions";
 import ConversionForm from "../ConversionForm";
 
-const massOptions = ["Kilograms", "Pounds", "Tonnes"];
+const massOptions = [
+  "Kilograms",
+  "Pounds",
+  "Tonnes",
+  "Gram",
+  "Milligram",
+  "Microgram",
+  "Imperial ton",
+  "US ton",
+  "Stone",
+  "Ounce",
+];
 
 export const MassConversion = () => {
   return (
