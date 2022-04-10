@@ -1,4 +1,11 @@
-import { Autocomplete, TextField, Button, Typography } from "@mui/material";
+import css from "./ConversionForm.module.css";
+import {
+  Autocomplete,
+  TextField,
+  Button,
+  Typography,
+  Box,
+} from "@mui/material";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 
@@ -39,15 +46,18 @@ const Form = (props) => {
   });
 
   return (
-    <form className="ConversionForm" onSubmit={formik.handleSubmit}>
-      <div className="ConversionForm-Half">
+    <form className={css.ConversionForm} onSubmit={formik.handleSubmit}>
+      <Box className={css.ConversionFormHalf}>
         <Autocomplete
           disablePortal
           id="ConversionForm-From"
           fullWidth
-          className="ConversionForm-FormElement"
+          sx={{ p: 1 }}
           options={optionsList}
-          onChange={(e, value) => formik.setFieldValue("convertFrom", value)}
+          onChange={(e, value) => {
+            formik.setFieldValue("convertFrom", value);
+            formik.submitForm();
+          }}
           value={formik.values.convertFrom}
           renderInput={(params) => (
             <TextField {...params} label="Convert From" />
@@ -57,24 +67,30 @@ const Form = (props) => {
           fullWidth
           id="ConversionForm-From"
           name="valueToConvert"
-          className="ConversionForm-FormElement"
           placeholder="Please enter a value"
+          sx={{ p: 1 }}
           variant="outlined"
           type="number"
           step={0.1}
-          onChange={formik.handleChange}
+          onChange={(e) => {
+            formik.handleChange(e);
+            formik.submitForm();
+          }}
           value={formik.values.valueToConvert}
         />
-      </div>
+      </Box>
 
-      <div className="ConversionForm-Half">
+      <Box className={css.ConversionFormHalf}>
         <Autocomplete
           disablePortal
           id="ConversionForm-To"
           fullWidth
-          className="ConversionForm-FormElement"
+          sx={{ p: 1 }}
           options={optionsList}
-          onChange={(e, value) => formik.setFieldValue("convertTo", value)}
+          onChange={(e, value) => {
+            formik.setFieldValue("convertTo", value);
+            formik.submitForm();
+          }}
           value={formik.values.convertTo}
           renderInput={(params) => <TextField {...params} label="Convert To" />}
         />
@@ -83,16 +99,13 @@ const Form = (props) => {
           disabled
           id="outlined-disabled"
           fullWidth
-          className="ConversionForm-FormElement"
+          sx={{ p: 1 }}
           placeholder="Result"
           type="number"
           step={0.1}
           value={result}
         />
-      </div>
-      <Button className="SubmitForm" variant="outlined" type="submit">
-        Submit
-      </Button>
+      </Box>
     </form>
   );
 };

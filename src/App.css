@@ -53,30 +53,3 @@
   padding: 14px 16px;
   text-decoration: none;
 }
-
-.ConversionForm {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.ConversionForm-Half {
-  display: block;
-  border-radius: 25px;
-  border: 2px solid #000000;
-  padding: 1em; 
-  margin-left: 2.5vw;
-  margin-right: 2.5vw;
-  margin-top: 2.5vw;
-  min-width: 300px;
-}
-
-.ConversionForm-FormElement {
-  padding-bottom: 1em;
-  width: 100%;
-}
-
-.SubmitForm {
-  background-color: aqua;
-  color: white;
-}
