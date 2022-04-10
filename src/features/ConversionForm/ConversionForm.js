@@ -1,6 +1,12 @@
-import { Autocomplete, TextField, Button } from "@mui/material";
+import { Autocomplete, TextField, Button, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import React, { useState } from "react";
+
+const ConversionFormHeader = (props) => (
+  <Typography variant="h3" variantMapping="h2">
+    {props.conversionType}
+  </Typography>
+);
 
 export const ConversionForm = (props) => {
   const conversionFormat = props.conversionFormat; //'Mass
@@ -42,6 +48,7 @@ export const ConversionForm = (props) => {
 
   return (
     <form className="ConversionForm">
+      <ConversionFormHeader conversionType={conversionFormat} />
       <div className="ConversionForm-Half">
         <Autocomplete
           disablePortal
