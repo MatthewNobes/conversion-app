@@ -1,10 +1,19 @@
 //import css from './DistanceConversion.module.css';
-import '../../App.css'
+import "../../App.css";
+import React from "react";
+import ConversionForm from "../../features/ConversionForm";
 
-export default function DistanceConversion() {
+const distanceOptions = ["Meters", "Kilometers", "Centimeters"];
+
+export const DistanceConversion = () => {
   return (
-      <h1 className="PageTitle">
-        Distance Conversion
-      </h1>
+    <>
+      <ConversionForm
+        conversionFormat={"Distance"}
+        defaultStartUnit={"Meters"}
+        defaultEndUnit={"Kilometers"}
+        optionsList={distanceOptions}
+      />
+    </>
   );
-}
+};
