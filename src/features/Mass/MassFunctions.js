@@ -1,4 +1,4 @@
-const convertMass = (inputUnit, outputUnit, valueToConvert) => {
+export const convertMass = (inputUnit, outputUnit, valueToConvert) => {
   if (
     inputUnit === undefined ||
     outputUnit === undefined ||
@@ -20,7 +20,7 @@ const convertMass = (inputUnit, outputUnit, valueToConvert) => {
  * @param {number} unit The unit you wish to convert to from kg
  * @returns The multiplier ratio to convert by to convert from kg to the input unit
  */
-const getFromKiloRatio = (unit) => {
+export const getFromKiloRatio = (unit) => {
   let ratio = NaN;
   try {
     // eslint-disable-next-line no-throw-literal
@@ -103,12 +103,12 @@ const getToKiloRatio = (unit) => {
   return ratio;
 };
 
-const getKgValue = (startUnit, originValue) => {
+export const getKgValue = (startUnit, originValue) => {
   const ratio = getToKiloRatio(startUnit);
   return convert(ratio, originValue);
 };
 
-const getEndValue = (endUnit, kgValue) => {
+export const getEndValue = (endUnit, kgValue) => {
   const ratio = getFromKiloRatio(endUnit);
   return convert(ratio, kgValue);
 };
@@ -121,5 +121,3 @@ export const convert = (ratio, valueToConvert) => {
     return NaN;
   }
 };
-
-export { convertMass, getKgValue };
