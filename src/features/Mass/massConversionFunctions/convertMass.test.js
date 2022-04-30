@@ -1,4 +1,4 @@
-import { convertMass, getKgValue } from "./MassFunctions";
+import { convertMass, getKgValue } from "./convertMass";
 
 describe("Testing the convertMass function", () => {
   it("testing valid conversion from tonnes to kilograms", () => {

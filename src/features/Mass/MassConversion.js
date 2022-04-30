@@ -1,6 +1,6 @@
 import "../../App.css";
 import React from "react";
-import { convertMass } from "./MassFunctions";
+import { convertMass } from "./massConversionFunctions/convertMass";
 import ConversionForm from "../ConversionForm";
 import massOptions from "./massOptions.json";
 
