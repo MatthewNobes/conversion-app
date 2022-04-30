@@ -10,8 +10,8 @@ const massOptions = [
   "Tonnes",
   "Grams",
   "Milligrams",
-  "Imperial ton",
-  "US ton",
+  "Imperial Ton",
+  "US Ton",
   "Stone",
   "Ounce",
 ];
