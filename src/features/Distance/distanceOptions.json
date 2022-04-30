@@ -1,1 +1,10 @@
-["Meters", "Kilometers", "Centimeters"]
+[
+  "Meters",
+  "Kilometers",
+  "Centimeters",
+  "Millimeters",
+  "Miles",
+  "Yards",
+  "Feet",
+  "Nautical Miles"
+]
