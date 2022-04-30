@@ -39,7 +39,7 @@ const getFromKiloRatio = (unit) => {
       case "Stone":
         ratio = 0.157473;
         break;
-      case "Once":
+      case "Ounce":
         ratio = 35.2739;
         break;
       default:
@@ -83,7 +83,7 @@ const getToKiloRatio = (unit) => {
       case "Stone":
         ratio = 6.35029;
         break;
-      case "Once":
+      case "Ounce":
         ratio = 0.02834952;
         break;
       default:

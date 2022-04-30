@@ -133,8 +133,8 @@ describe("Testing the valid combinations for the getKgValue function", () => {
     expect(getKgValue("Stone", 78)).toBeCloseTo(495.323, 0.5);
   });
 
-  it("should correctly convert with valid int parameters for Once", () => {
-    expect(getKgValue("Once", 96)).toBeCloseTo(2.72155, 0.5);
+  it("should correctly convert with valid int parameters for Ounce", () => {
+    expect(getKgValue("Ounce", 96)).toBeCloseTo(2.72155, 0.5);
   });
 
   it("should correctly convert with valid decimal parameters for Tonnes", () => {
@@ -165,8 +165,8 @@ describe("Testing the valid combinations for the getKgValue function", () => {
     expect(getKgValue("Stone", 88.45)).toBeCloseTo(561.6834, 0.5);
   });
 
-  it("should correctly convert with valid decimal parameters for Once", () => {
-    expect(getKgValue("Once", 47.665)).toBeCloseTo(1.35, 0.5);
+  it("should correctly convert with valid decimal parameters for Ounce", () => {
+    expect(getKgValue("Ounce", 47.665)).toBeCloseTo(1.35, 0.5);
   });
 
   it("should return a valid result when passed a numerical string ratio and a valid originValue", () => {
@@ -225,7 +225,7 @@ describe("Testing the valid combinations for the convert() function", () => {
     expect(convert(6.35029, 78)).toBeCloseTo(495.323, 0.5);
   });
 
-  it("should correctly convert with valid int parameters for Once", () => {
+  it("should correctly convert with valid int parameters for Ounce", () => {
     expect(convert(0.02834952, 96)).toBeCloseTo(2.72155, 0.5);
   });
 
@@ -257,7 +257,7 @@ describe("Testing the valid combinations for the convert() function", () => {
     expect(convert(6.35029, 88.45)).toBeCloseTo(561.6834, 0.5);
   });
 
-  it("should correctly convert with valid decimal parameters for Once", () => {
+  it("should correctly convert with valid decimal parameters for Ounce", () => {
     expect(convert(0.02834952, 47.665)).toBeCloseTo(1.35, 0.5);
   });
 
