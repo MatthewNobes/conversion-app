@@ -1,93 +1,116 @@
 const convertMass = (inputUnit, outputUnit, valueToConvert) => {
-    let outputValue
-    try {
-        if(inputUnit === undefined || outputUnit === undefined || valueToConvert === undefined) throw "missing parameters";
-        let kgValue = valueToConvert;
-        switch(inputUnit) {
-            case 'Tonnes':
-                kgValue = tonneToKg(valueToConvert);
-                break;
-            case 'Pounds':
-                kgValue = lbToKg(valueToConvert);
-                break;
-            default:
-                break;  
-        } 
-        outputValue = convertKg(outputUnit, kgValue);
-    } catch (error) {
-        outputValue = null;
+  const kgValue = getKgValue(inputUnit, valueToConvert);
+  console.log("Kg Value: " + kgValue);
+  const outputValue = getEndValue(outputUnit, kgValue);
+  console.log(outputUnit + " Value: " + outputValue);
+  return outputValue;
+};
+
+/**
+ * Gets the value to multiply by to convert from a kilo into another unit
+ * @param {number} unit The unit you wish to convert to from kg
+ * @returns The multiplier ratio to convert by to convert from kg to the input unit
+ */
+const getFromKiloRatio = (unit) => {
+  let ratio = NaN;
+  try {
+    // eslint-disable-next-line no-throw-literal
+    if (unit === undefined) throw "missing parameters";
+
+    switch (unit) {
+      case "Tonnes":
+        ratio = 0.001;
+        break;
+      case "Pounds":
+        ratio = 2.2046;
+        break;
+      case "Grams":
+        ratio = 1000;
+        break;
+      case "Milligrams":
+        ratio = 1000000;
+        break;
+      case "Imperial Ton":
+        ratio = 0.0009842;
+        break;
+      case "US Ton":
+        ratio = 0.001102312;
+        break;
+      case "Stone":
+        ratio = 0.157473;
+        break;
+      case "Once":
+        ratio = 35.2739;
+        break;
+      default:
+        ratio = 1;
+        break;
     }
-    return outputValue;
-}
-
-const convertKg = (outputUnit, unitToConvert) => {
-    let outputValue = unitToConvert;
-    switch(outputUnit) {
-        case 'Tonnes':
-            outputValue = kgToTonne(unitToConvert);
-            break;
-        case 'Pounds':
-            outputValue = kgToLb(unitToConvert);
-            break;
-        default:
-            break
-    } 
-    return outputValue;
-}
+  } catch (error) {}
+  return ratio;
+};
 
 /**
- * 
- * @param {decimal} tonne The tonne value to convert.
- * @returns {decimal} The kilogram value of the result of the conversion from tonnes.
+ * Gets the value to multiply by to convert from the input unit to kg
+ * @param {number} unit The unit you wish to convert to kg
+ * @returns The multiplier ratio to convert from the input unit to kg
  */
-const tonneToKg = (tonne) => {
-    try {
-        const kg = tonne * 1000;
-        return kg;
-    } catch (error) {
-        return null;
+const getToKiloRatio = (unit) => {
+  let ratio = NaN;
+  try {
+    // eslint-disable-next-line no-throw-literal
+    if (unit === undefined) throw "missing parameters";
+
+    switch (unit) {
+      case "Tonnes":
+        ratio = 1000;
+        break;
+      case "Pounds":
+        ratio = 0.45359237;
+        break;
+      case "Grams":
+        ratio = 0.001;
+        break;
+      case "Milligrams":
+        ratio = 0.000001;
+        break;
+      case "Imperial Ton":
+        ratio = 1016.0469088;
+        break;
+      case "US Ton":
+        ratio = 907.18474;
+        break;
+      case "Stone":
+        ratio = 6.35029;
+        break;
+      case "Once":
+        ratio = 0.02834952;
+        break;
+      default:
+        ratio = 1;
+        break;
     }
-}
+  } catch (error) {}
+  return ratio;
+};
 
-/**
- * 
- * @param {decimal} lb The pound value inputted in.
- * @returns {decimal} The kilogram value of the result of the conversion.
- */
- const lbToKg = (lb) => {
-    try {
-        const kg = lb / 2.205;
-        return kg;
-    } catch (error) {
-        return null;
-    }
-}
+const getKgValue = (startUnit, originValue) => {
+  const ratio = getToKiloRatio(startUnit);
+  return convert(ratio, originValue);
+};
 
-/**
- * This function converts kilograms to pounds.
- * @param {decimal} kg The kilogram value to be converted. 
- * @returns {decimal} The pound value of the conversion.
- */
-const kgToLb = (kg) => {
-    const lb = kg * 2.205;
-    return lb;
-}
+const getEndValue = (endUnit, kgValue) => {
+  const ratio = getFromKiloRatio(endUnit);
+  return convert(ratio, kgValue);
+};
 
-/**
- * The conversion from kilogram to tonnes
- * @param {decimal} kg The kilogram value to be converted.
- * @returns {decimal} The tonne value to be the result
- */
-const kgToTonne = (kg) => {
-    const tonne = kg / 1000;
-    return tonne;
-}
+export const convert = (ratio, valueToConvert) => {
+  try {
+    const convertedValue = valueToConvert * ratio;
+    return convertedValue;
+  } catch (error) {
+    return NaN;
+  }
+};
 
-export {
-    convertMass,
-    convertKg,
-    tonneToKg,
-    lbToKg,
-    kgToTonne, 
-    kgToLb,
-}
+export { convertMass, getKgValue };
