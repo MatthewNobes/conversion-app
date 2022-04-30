@@ -1,9 +1,18 @@
 const convertMass = (inputUnit, outputUnit, valueToConvert) => {
-  const kgValue = getKgValue(inputUnit, valueToConvert);
-  console.log("Kg Value: " + kgValue);
-  const outputValue = getEndValue(outputUnit, kgValue);
-  console.log(outputUnit + " Value: " + outputValue);
-  return outputValue;
+  if (
+    inputUnit === undefined ||
+    outputUnit === undefined ||
+    valueToConvert === undefined
+  ) {
+    return NaN;
+  }
+  if (inputUnit === outputUnit) {
+    return valueToConvert;
+  } else {
+    const kgValue = getKgValue(inputUnit, valueToConvert);
+    const outputValue = getEndValue(outputUnit, kgValue);
+    return outputValue;
+  }
 };
 
 /**
