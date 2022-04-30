@@ -1,3 +1,5 @@
+import { convertRatio } from "../../utils/convertRatio/convertRatio";
+
 export const convertMass = (inputUnit, outputUnit, valueToConvert) => {
   if (
     inputUnit === undefined ||
@@ -105,19 +107,10 @@ const getToKiloRatio = (unit) => {
 
 export const getKgValue = (startUnit, originValue) => {
   const ratio = getToKiloRatio(startUnit);
-  return convert(ratio, originValue);
+  return convertRatio(ratio, originValue);
 };
 
 export const getEndValue = (endUnit, kgValue) => {
   const ratio = getFromKiloRatio(endUnit);
-  return convert(ratio, kgValue);
-};
-
-export const convert = (ratio, valueToConvert) => {
-  try {
-    const convertedValue = valueToConvert * ratio;
-    return convertedValue;
-  } catch (error) {
-    return NaN;
-  }
+  return convertRatio(ratio, kgValue);
 };

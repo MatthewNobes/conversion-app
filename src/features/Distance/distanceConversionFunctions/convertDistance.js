@@ -1,5 +1,6 @@
 import { getToMeterRatio } from "./getToMeterRatio";
 import { getFromMeterRatio } from "./getFromMeterRatio";
+import { convertRatio } from "../../../utils/convertRatio/convertRatio";
 
 export const convertDistance = (inputUnit, outputUnit, valueToConvert) => {
   if (
@@ -20,19 +21,10 @@ export const convertDistance = (inputUnit, outputUnit, valueToConvert) => {
 
 export const getMeterValue = (startUnit, originValue) => {
   const ratio = getToMeterRatio(startUnit);
-  return convert(ratio, originValue);
+  return convertRatio(ratio, originValue);
 };
 
 export const getEndValue = (endUnit, kgValue) => {
   const ratio = getFromMeterRatio(endUnit);
-  return convert(ratio, kgValue);
-};
-
-export const convert = (ratio, valueToConvert) => {
-  try {
-    const convertedValue = valueToConvert * ratio;
-    return convertedValue;
-  } catch (error) {
-    return NaN;
-  }
+  return convertRatio(ratio, kgValue);
 };
