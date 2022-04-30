@@ -1,8 +1,7 @@
 import "../../App.css";
 import React from "react";
 import ConversionForm from "../ConversionForm";
-
-const distanceOptions = ["Meters", "Kilometers", "Centimeters"];
+import distanceOptions from "./distanceOptions.json";
 
 export const DistanceConversion = () => {
   return (
