@@ -56,6 +56,16 @@ This application has been setup with Jest testing to ensure that code can be qui
 ``` 
 npm test
 ```
+### Development guidance 
+
+The following should be taken into account when making changes to this repo:
+
+* Major features such as mass conversion are stored in the features directory
+* Smaller components such as the Header are stored within the components directory.
+* Test scripts are located in the same directory as the functions and components they test
+* Styling is done within the same directory as where it is used, using css modules. Any major project styling is done from a central CSS file stored in the theme directory
+* Material UI should handle most styling and general changes should be done using the theme object, located in the theme directory
+* The utils directory is for common functions and elements that might be needed in multiple areas in the future, such as the copy to clipboard function. This makes them easier to find and use for other projects in the future.
 
 ## Production 
 
@@ -70,13 +80,3 @@ npm run deploy
 
 The production version can be viewed at: [https://matthewnobes.github.io/conversion-app/](https://matthewnobes.github.io/conversion-app/ "conversion-app production version")
 
-### Development guidance 
-
-The following should be taken into account when making changes to this repo:
-
-* Major features such as mass conversion are stored in the features directory
-* Smaller components such as the Header are stored within the components directory.
-* Test scripts are located in the same directory as the functions and components they test
-* Styling is done within the same directory as where it is used, using css modules. Any major project styling is done from a central CSS file stored in the theme directory
-* Material UI should handle most styling and general changes should be done using the theme object, located in the theme directory
-* The utils directory is for common functions and elements that might be needed in multiple areas in the future, such as the copy to clipboard function. This makes them easier to find and use for other projects in the future.
