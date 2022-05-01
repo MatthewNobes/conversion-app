@@ -59,6 +59,7 @@ const Form = (props) => {
         />
         <TextField
           fullWidth
+          autoFocus
           id="ConversionForm-From"
           name="valueToConvert"
           placeholder="Please enter a value"
