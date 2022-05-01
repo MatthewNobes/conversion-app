@@ -3,7 +3,7 @@
   "author": "Matthew Nobes",
   "homepage": "https://matthewnobes.github.io/conversion-app/",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",
