@@ -8,8 +8,8 @@ Initially this application will provide basic conversions for a few different ty
 
 Unit type  | Current status
 ------------- | -------------
-Distances  | In development
-Mass  | In development
+Distances  | Initial version (v0.2.0)
+Mass  | Initial version (v0.1.0)
 Speed | Planning stage
 Binary | Proposed
 Memory (Mb) | Proposed
@@ -21,9 +21,19 @@ Table 1 - Proposed unit conversions to be added.
 
 ### Core functionality 
 
-The method for making conversions is to convert the input into a base unit, like a kilogram and then convert this base unit into the users desired unit. For example, the user might input 120lb which they want converted to tonnes. This would be converted from pounds to kilograms and then from kilograms to tonnes. 
+The method for making conversions is to convert the input into a base unit, like a kilogram and then convert this base unit into the users desired unit. For example, the user might input 120lb which they want converted to tonnes. This would be converted from pounds to kilograms and then from kilograms to tonnes.
+
+#### Base units
+
+The base units for each type of conversion can be seen in Table 2. 
+
+Unit type  | Base unit
+------------- | -------------
+Distances  | Meters
+Mass  | Kilograms
 
 
+Table 2 - The common base units for each conversion type.
 
 ## Development 
 
@@ -46,6 +56,19 @@ This application has been setup with Jest testing to ensure that code can be qui
 ``` 
 npm test
 ```
+
+## Production 
+
+A production version of this application is now live, hosted using GitHub pages. To facilitate this, the application is setup with the [gh-pages npm extension](https://www.npmjs.com/package/gh-pages "gh-pages npm package"). 
+
+Pushing new version to the gh-pages branch, two scripts have been setup, a deploy and a pre-deploy. All that is needed to push to this branch is the deploy command.
+
+```
+npm run predeploy
+npm run deploy
+```
+
+The production version can be viewed at: [https://matthewnobes.github.io/conversion-app/](https://matthewnobes.github.io/conversion-app/ "conversion-app production version")
 
 ### Development guidance 
 
