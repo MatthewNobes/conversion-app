@@ -17,7 +17,7 @@ const Form = (props) => {
   const convertFrom = props.defaultStartUnit;
   const convertTo = props.defaultEndUnit;
 
-  const valueToConvert = 0;
+  const valueToConvert = NaN;
   const [result, appendResult] = useState();
 
   const formik = useFormik({
