@@ -71,6 +71,7 @@ const Form = (props) => {
             formik.handleChange(e);
             formik.submitForm();
           }}
+          inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
           value={formik.values.valueToConvert}
         />
       </Box>
