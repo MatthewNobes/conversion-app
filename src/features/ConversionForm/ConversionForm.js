@@ -1,7 +1,14 @@
 import css from "./ConversionForm.module.css";
-import { Autocomplete, TextField, Typography, Box } from "@mui/material";
+import {
+  Autocomplete,
+  TextField,
+  Typography,
+  Box,
+  Button,
+} from "@mui/material";
 import { useFormik } from "formik";
 import React, { useState } from "react";
+import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 
 const ConversionFormHeader = (props) => (
   <Typography variant="h3" variantMapping="h2">
@@ -9,8 +16,25 @@ const ConversionFormHeader = (props) => (
   </Typography>
 );
 
+const swapValues = (newValue, valueToChange, changeFn) => {
+  changeFn(valueToChange, newValue);
+};
+
+const SwapButton = (props) => (
+  <Button
+    startIcon={<SwapHorizIcon />}
+    onClick={() => {
+      const initialStartValue = props.startValue;
+      const initialEndValue = props.endValue;
+      swapValues(initialEndValue, "convertFrom", props.changeFn);
+      swapValues(initialStartValue, "convertTo", props.changeFn);
+    }}
+  >
+    Swap
+  </Button>
+);
+
 const Form = (props) => {
-  //const conversionFormat = props.conversionFormat; will be needed later
   const optionsList = props.optionsList;
   const convertFn = props.convertFn;
 
@@ -103,6 +127,12 @@ const Form = (props) => {
           value={result}
         />
       </Box>
+
+      <SwapButton
+        changeFn={formik.setFieldValue}
+        startValue={formik.values.convertFrom}
+        endValue={formik.values.convertTo}
+      />
     </form>
   );
 };
