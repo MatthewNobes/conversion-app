@@ -10,6 +10,7 @@ export const SwapButton = (props) => (
       const initialEndValue = props.endValue;
       swapValues(initialEndValue, "convertFrom", props.changeFn);
       swapValues(initialStartValue, "convertTo", props.changeFn);
+      props.reCalculateFn();
     }}
   >
     Swap

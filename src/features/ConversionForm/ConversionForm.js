@@ -107,6 +107,7 @@ const Form = (props) => {
 
       <SwapButton
         changeFn={formik.setFieldValue}
+        reCalculateFn={formik.submitForm}
         startValue={formik.values.convertFrom}
         endValue={formik.values.convertTo}
       />
