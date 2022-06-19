@@ -1,8 +1,15 @@
 import css from "./ConversionForm.module.css";
-import { Autocomplete, TextField, Typography, Box } from "@mui/material";
+import {
+  Autocomplete,
+  TextField,
+  Typography,
+  Box,
+  Button,
+} from "@mui/material";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { useState, forceUpdate } from "react";
 import SwapButton from "./SwapButton";
+import ResetButton from "./ResetButton";
 
 const ConversionFormHeader = (props) => (
   <Typography variant="h3" variantMapping="h2">
@@ -26,7 +33,6 @@ const Form = (props) => {
       convertTo: convertTo,
 
       valueToConvert: valueToConvert,
-      result: result,
     },
 
     onSubmit: (values) => {
@@ -38,6 +44,8 @@ const Form = (props) => {
       appendResult(conversionResult);
     },
   });
+
+  console.log("rerendered");
 
   return (
     <form className={css.ConversionForm} onSubmit={formik.handleSubmit}>
@@ -75,7 +83,6 @@ const Form = (props) => {
           value={formik.values.valueToConvert}
         />
       </Box>
-
       <Box sx={{ minWidth: "300px", p: 1 }}>
         <Autocomplete
           disablePortal
@@ -104,12 +111,17 @@ const Form = (props) => {
           value={result}
         />
       </Box>
-
       <SwapButton
         changeFn={formik.setFieldValue}
         reCalculateFn={formik.submitForm}
         startValue={formik.values.convertFrom}
         endValue={formik.values.convertTo}
+      />
+      <ResetButton
+        values={formik.values}
+        changeFn={formik.setFieldValue}
+        defaultStartUnit={props.defaultStartUnit}
+        defaultEndUnit={props.defaultEndUnit}
       />
     </form>
   );
