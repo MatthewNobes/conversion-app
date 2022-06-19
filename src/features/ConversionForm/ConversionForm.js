@@ -1,13 +1,7 @@
 import css from "./ConversionForm.module.css";
-import {
-  Autocomplete,
-  TextField,
-  Typography,
-  Box,
-  Button,
-} from "@mui/material";
+import { Autocomplete, TextField, Typography, Box } from "@mui/material";
 import { useFormik } from "formik";
-import React, { useState, forceUpdate } from "react";
+import React, { useState } from "react";
 import SwapButton from "./SwapButton";
 import ResetButton from "./ResetButton";
 
@@ -31,7 +25,6 @@ const Form = (props) => {
     initialValues: {
       convertFrom: convertFrom,
       convertTo: convertTo,
-
       valueToConvert: valueToConvert,
     },
 
@@ -44,8 +37,6 @@ const Form = (props) => {
       appendResult(conversionResult);
     },
   });
-
-  console.log("rerendered");
 
   return (
     <form className={css.ConversionForm} onSubmit={formik.handleSubmit}>
@@ -118,10 +109,10 @@ const Form = (props) => {
         endValue={formik.values.convertTo}
       />
       <ResetButton
-        values={formik.values}
         changeFn={formik.setFieldValue}
         defaultStartUnit={props.defaultStartUnit}
         defaultEndUnit={props.defaultEndUnit}
+        resetResultFn={() => appendResult(NaN)}
       />
     </form>
   );

@@ -1,11 +1,16 @@
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
-const resetFields = (values, changeFn, defaultStartUnit, defaultEndUnit) => {
+const resetFields = (
+  changeFn,
+  defaultStartUnit,
+  defaultEndUnit,
+  resetResultFn
+) => {
   changeFn("convertFrom", defaultStartUnit);
   changeFn("convertTo", defaultEndUnit);
   changeFn("valueToConvert", NaN);
-  console.log(values);
+  resetResultFn();
 };
 
 export const ResetButton = (props) => (
@@ -13,10 +18,10 @@ export const ResetButton = (props) => (
     startIcon={<RefreshIcon />}
     onClick={() =>
       resetFields(
-        props.values,
         props.changeFn,
         props.defaultStartUnit,
-        props.defaultEndUnit
+        props.defaultEndUnit,
+        props.resetResultFn
       )
     }
   >
