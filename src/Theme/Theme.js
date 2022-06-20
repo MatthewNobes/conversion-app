@@ -27,6 +27,9 @@ export const generateTheme = (isDarkMode) => {
       typography: {
         fontFamily: "Helvetica",
         fontSize: 15,
+        h1: {
+          fontSize: "10rem",
+        },
       },
       text: {
         primary: "#FFF",

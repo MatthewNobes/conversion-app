@@ -6,7 +6,7 @@ import SwapButton from "./SwapButton";
 import ResetButton from "./ResetButton";
 
 const ConversionFormHeader = (props) => (
-  <Typography variant="h3" variantMapping="h2">
+  <Typography variant="h2" component="h1">
     {props.conversionType}
   </Typography>
 );
