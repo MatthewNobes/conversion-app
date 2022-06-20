@@ -1,9 +1,19 @@
 import css from "./ConversionForm.module.css";
-import { Autocomplete, TextField, Typography, Box } from "@mui/material";
+import {
+  Autocomplete,
+  TextField,
+  Typography,
+  Box,
+  OutlinedInput,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import SwapButton from "./SwapButton";
 import ResetButton from "./ResetButton";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { copyToClipboard } from "../../utils/copyToClipboard/copyToClipboard";
 
 const ConversionFormHeader = (props) => (
   <Typography variant="h2" component="h1">
@@ -89,17 +99,27 @@ const Form = (props) => {
           renderInput={(params) => <TextField {...params} label="Convert To" />}
         />
 
-        <TextField
+        <OutlinedInput
           InputProps={{
             readOnly: true,
           }}
           id="outlined-disabled"
           fullWidth
-          sx={{ p: 1 }}
           placeholder="Result"
-          type="number"
-          step={0.1}
           value={result}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="Copy password to clipboard"
+                onClick={() => {
+                  copyToClipboard(result);
+                }}
+                edge="end"
+              >
+                <ContentCopyIcon />
+              </IconButton>
+            </InputAdornment>
+          }
         />
       </Box>
       <div className={css.ButtonPanel}>
