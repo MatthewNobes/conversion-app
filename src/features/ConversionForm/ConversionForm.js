@@ -102,18 +102,20 @@ const Form = (props) => {
           value={result}
         />
       </Box>
-      <SwapButton
-        changeFn={formik.setFieldValue}
-        reCalculateFn={formik.submitForm}
-        startValue={formik.values.convertFrom}
-        endValue={formik.values.convertTo}
-      />
-      <ResetButton
-        changeFn={formik.setFieldValue}
-        defaultStartUnit={props.defaultStartUnit}
-        defaultEndUnit={props.defaultEndUnit}
-        resetResultFn={() => appendResult(NaN)}
-      />
+      <div className={css.ButtonPanel}>
+        <SwapButton
+          changeFn={formik.setFieldValue}
+          reCalculateFn={formik.submitForm}
+          startValue={formik.values.convertFrom}
+          endValue={formik.values.convertTo}
+        />
+        <ResetButton
+          changeFn={formik.setFieldValue}
+          defaultStartUnit={props.defaultStartUnit}
+          defaultEndUnit={props.defaultEndUnit}
+          resetResultFn={() => appendResult(NaN)}
+        />
+      </div>
     </form>
   );
 };
