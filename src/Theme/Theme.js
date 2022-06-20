@@ -1,17 +1,50 @@
 import { createTheme } from "@mui/material";
 
 export const generateTheme = (isDarkMode) => {
-  const colourMode = isDarkMode === false ? "light" : "dark";
-  const config = {
+  const darkModeTheme = {
     palette: {
-      mode: colourMode,
+      mode: "dark",
       primary: {
-        main: "#3D5A80",
+        main: "#fff",
+        light: "#E0FBFC",
         dark: "#30323D",
         contrastText: "#FFF",
       },
       secondary: {
+        main: "#FFF",
+      },
+      error: {
         main: "#F1856A",
+        dark: "#E03D15",
+      },
+      background: {
+        default: "#293241",
+        paper: "#3D5A80",
+      },
+      extraColours: {
+        lightCyan: "#E0FBFC",
+      },
+      typography: {
+        fontFamily: "Helvetica",
+        fontSize: 15,
+      },
+      text: {
+        primary: "#FFF",
+        secondary: "#a4a4a4",
+      },
+    },
+  };
+
+  const lightModeTheme = {
+    palette: {
+      primary: {
+        main: "#3D5A80",
+        light: "#E0FBFC",
+        dark: "#30323D",
+        contrastText: "#FFF",
+      },
+      secondary: {
+        main: "#3F4D64",
       },
       error: {
         main: "#F1856A",
@@ -30,10 +63,13 @@ export const generateTheme = (isDarkMode) => {
       },
       text: {
         primary: "#000",
-        secondary: "#4D5061",
+        secondary: "#293241",
       },
     },
   };
-  const theme = createTheme(config);
+
+  const colourMode = isDarkMode === false ? lightModeTheme : darkModeTheme;
+
+  const theme = createTheme(colourMode);
   return theme;
 };

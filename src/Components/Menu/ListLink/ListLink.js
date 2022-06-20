@@ -6,12 +6,12 @@ import HomeIcon from "@mui/icons-material/Home";
 
 const GetIcon = (props) => {
   if (props.linkIcon === "Mass") {
-    return <FitnessCenterIcon />;
+    return <FitnessCenterIcon color="secondary" />;
   }
   if (props.linkIcon === "Distance") {
-    return <SquareFootIcon />;
+    return <SquareFootIcon color="secondary" />;
   } else {
-    return <HomeIcon />;
+    return <HomeIcon color="secondary" />;
   }
 };
 
