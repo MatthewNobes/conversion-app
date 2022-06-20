@@ -9,6 +9,7 @@ import createCache from "@emotion/cache";
 import generateTheme from "./Theme";
 import { CacheProvider } from "@emotion/react";
 import { ThemeProvider } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 
 const muiCache = createCache({
   key: "mui",
@@ -16,7 +17,8 @@ const muiCache = createCache({
 });
 
 const App = () => {
-  const theme = generateTheme(false);
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = generateTheme(prefersDarkMode);
   return (
     <CacheProvider value={muiCache}>
       <ThemeProvider theme={theme}>

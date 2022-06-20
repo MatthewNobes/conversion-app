@@ -1,8 +1,10 @@
 import { createTheme } from "@mui/material";
 
 export const generateTheme = (isDarkMode) => {
+  const colourMode = isDarkMode === false ? "light" : "dark";
   const config = {
     palette: {
+      mode: colourMode,
       primary: {
         main: "#3D5A80",
         dark: "#30323D",
