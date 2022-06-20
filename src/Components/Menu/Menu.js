@@ -132,18 +132,21 @@ export const Menu = () => {
             linkLocation={"/"}
             linkPrimaryText={"Home"}
             linkIcon={"Home"}
+            linkSecondaryText={"App overview"}
           />
           <ListLink
             isOpen={open}
             linkLocation={"/Mass"}
             linkPrimaryText={"Mass"}
             linkIcon={"Mass"}
+            linkSecondaryText={"Weight (Mass)"}
           />
           <ListLink
             isOpen={open}
             linkLocation={"/Distance"}
             linkPrimaryText={"Distance"}
             linkIcon={"Distance"}
+            linkSecondaryText={"Length & Distance"}
           />
         </List>
       </Drawer>
